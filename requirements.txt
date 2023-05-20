@@ -1,4 +1,6 @@
-pickle
 numpy
 fastapi
 pydantic
+sklearn
+uvicorn
+jinja2

@@ -3,7 +3,7 @@ import pickle
 import numpy as np
 from fastapi import FastAPI
 from pydantic import BaseModel
-
+import sklearn
 
 app = FastAPI(title="Predicting profiles")
 
@@ -78,3 +78,7 @@ def predict(prof: Profile):
     pred = pred[0]
     print(pred)
     return {"Prediction": pred}
+
+@app.get("/")
+def dashboard():
+    return {"Dashboard":"Home"}
