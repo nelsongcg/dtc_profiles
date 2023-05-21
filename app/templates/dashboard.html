@@ -7,6 +7,8 @@
     $(document).ready(function(){
         $(".rating").rating();
 
+        $('.ui.accordion').accordion();
+
 
         $("#genbtn").click(function(){
             $.ajax({
@@ -42,10 +44,10 @@
               success: function (msg) {
                 var prediction = msg;
 
-                var pred0 = (prediction.Prediction[0]).toLocaleString('en-US', { minimumFractionDigits: 2 });
-                var pred1 = (prediction.Prediction[1]).toLocaleString('en-US', { minimumFractionDigits: 2 });
-                var pred2 = (prediction.Prediction[2]).toLocaleString('en-US', { minimumFractionDigits: 2 });
-                var pred3 = (prediction.Prediction[3]).toLocaleString('en-US', { minimumFractionDigits: 2 });
+                var pred0 = (prediction.Prediction[0]*100).toLocaleString('en-US', { minimumFractionDigits: 2 });
+                var pred1 = (prediction.Prediction[1]*100).toLocaleString('en-US', { minimumFractionDigits: 2 });
+                var pred2 = (prediction.Prediction[2]*100).toLocaleString('en-US', { minimumFractionDigits: 2 });
+                var pred3 = (prediction.Prediction[3]*100).toLocaleString('en-US', { minimumFractionDigits: 2 });
                 
 
                 $('#profilepct0').html('<td id="profilepct0", data-label="Percentage">pred%</td>'.replace('pred',pred0));
@@ -61,76 +63,93 @@
 </script>
 
 
+<div class="ui styled accordion">
+    <div class="active title">
+      <i class="dropdown icon"></i>
+      How to use it
+    </div>
+    <div class="active content">
+      <p>Modify the ratings below and see the assingned profile.</p>
+    </div>
+
+    <div class="active title">
+      <i class="dropdown icon"></i>
+      Modify ratings
+    </div>
+    <div class="content">
+        <div> Churches </div>
+        <div id="churchrtn" class="ui massive star rating" data-rating="1", data-max-rating="5">Churches</div>
+        
+        <div> Resorts </div>
+        <div id="resortsrtn" class="ui massive star rating" data-rating="1", data-max-rating="5"></div>
+        
+        <div> Beaches </div>
+        <div id="beachesrtn" class="ui massive star rating" data-rating="1", data-max-rating="5"></div>
+        
+        <div> Parks </div>
+        <div id="peaksrtn" class="ui massive star rating" data-rating="1", data-max-rating="5"></div>
+        
+        <div> Theatres </div>
+        <div id="theatresrtn" class="ui massive star rating" data-rating="1", data-max-rating="5"></div>
+        
+        <div> Museums </div>
+        <div id="museumsrtn" class="ui massive star rating" data-rating="1", data-max-rating="5"></div>
+        
+        <div> Malls </div>
+        <div id="mallsrtn" class="ui massive star rating" data-rating="1", data-max-rating="5"></div>
+        
+        <div> Zoo </div>
+        <div id="zoortn" class="ui massive star rating" data-rating="1", data-max-rating="5"></div>
+        
+        <div> Pubs and bars </div>
+        <div id="pubrtn" class="ui massive star rating" data-rating="1", data-max-rating="5"></div>
+        
+        <div> Local services </div>
+        <div id="localrtn" class="ui massive star rating" data-rating="1", data-max-rating="5"></div>
+        
+        <div> Burger and pizza shops </div>
+        <div id="burguerrtn" class="ui massive star rating" data-rating="1", data-max-rating="5"></div>
+        
+        <div> Hotels and other lodgings </div>
+        <div id="hotelrtn" class="ui massive star rating" data-rating="1", data-max-rating="5"></div>
+        
+        <div> Juice bars </div>
+        <div id="juicertn" class="ui massive star rating" data-rating="1", data-max-rating="5"></div>
+        
+        <div> Art galleries </div>
+        <div id="artrtn" class="ui massive star rating" data-rating="1", data-max-rating="5"></div>
+        
+        <div> Dance clubs </div>
+        <div id="dancertn" class="ui massive star rating" data-rating="1", data-max-rating="5"></div>
+        
+        <div> Swimming pools </div>
+        <div id="poolrtn" class="ui massive star rating" data-rating="1", data-max-rating="5"></div>
+        
+        <div> Gyms </div>
+        <div id="gymrtn" class="ui massive star rating" data-rating="1", data-max-rating="5"></div>
+        
+        <div> Bakeries </div>
+        <div id="bakeriesrtn" class="ui massive star rating" data-rating="1", data-max-rating="5"></div>
+        
+        <div> Beauty spas </div>
+        <div id="beautyrtn" class="ui massive star rating" data-rating="1", data-max-rating="5"></div>
+        
+        <div> Cafes </div>
+        <div id="cafertn" class="ui massive star rating" data-rating="1", data-max-rating="5"></div>
+        
+        <div> View points </div>
+        <div id="viewrtn" class="ui massive star rating" data-rating="1", data-max-rating="5"></div>
+        
+        <div> Monuments </div>
+        <div id="monumentsrtn" class="ui massive star rating" data-rating="1", data-max-rating="5"></div>
+        
+        <div> Gardens </div>
+        <div id="gardensrtn" class="ui massive star rating" data-rating="1", data-max-rating="5"></div>
+
+    </div>
+  </div>
 
 
-<div> Churches </div>
-<div id="churchrtn" class="ui star rating" data-rating="1", data-max-rating="5">Churches</div>
-
-<div> Resorts </div>
-<div id="resortsrtn" class="ui star rating" data-rating="1", data-max-rating="5"></div>
-
-<div> Beaches </div>
-<div id="beachesrtn" class="ui star rating" data-rating="1", data-max-rating="5"></div>
-
-<div> Parks </div>
-<div id="peaksrtn" class="ui star rating" data-rating="1", data-max-rating="5"></div>
-
-<div> theatres </div>
-<div id="theatresrtn" class="ui star rating" data-rating="1", data-max-rating="5"></div>
-
-<div> museums </div>
-<div id="museumsrtn" class="ui star rating" data-rating="1", data-max-rating="5"></div>
-
-<div> malls </div>
-<div id="mallsrtn" class="ui star rating" data-rating="1", data-max-rating="5"></div>
-
-<div> zoo </div>
-<div id="zoortn" class="ui star rating" data-rating="1", data-max-rating="5"></div>
-
-<div> Pubs and bars </div>
-<div id="pubrtn" class="ui star rating" data-rating="1", data-max-rating="5"></div>
-
-<div> Local services </div>
-<div id="localrtn" class="ui star rating" data-rating="1", data-max-rating="5"></div>
-
-<div> burger_pizza_shops </div>
-<div id="burguerrtn" class="ui star rating" data-rating="1", data-max-rating="5"></div>
-
-<div> hotels_other_lodgings </div>
-<div id="hotelrtn" class="ui star rating" data-rating="1", data-max-rating="5"></div>
-
-<div> juice_bars </div>
-<div id="juicertn" class="ui star rating" data-rating="1", data-max-rating="5"></div>
-
-<div> art_galleries </div>
-<div id="artrtn" class="ui star rating" data-rating="1", data-max-rating="5"></div>
-
-<div> dance_clubs </div>
-<div id="dancertn" class="ui star rating" data-rating="1", data-max-rating="5"></div>
-
-<div> swimming_pools </div>
-<div id="poolrtn" class="ui star rating" data-rating="1", data-max-rating="5"></div>
-
-<div> gyms </div>
-<div id="gymrtn" class="ui star rating" data-rating="1", data-max-rating="5"></div>
-
-<div> bakeries </div>
-<div id="bakeriesrtn" class="ui star rating" data-rating="1", data-max-rating="5"></div>
-
-<div> beauty_spas </div>
-<div id="beautyrtn" class="ui star rating" data-rating="1", data-max-rating="5"></div>
-
-<div> cafes </div>
-<div id="cafertn" class="ui star rating" data-rating="1", data-max-rating="5"></div>
-
-<div> view_points </div>
-<div id="viewrtn" class="ui star rating" data-rating="1", data-max-rating="5"></div>
-
-<div> monuments </div>
-<div id="monumentsrtn" class="ui star rating" data-rating="1", data-max-rating="5"></div>
-
-<div> gardens </div>
-<div id="gardensrtn" class="ui star rating" data-rating="1", data-max-rating="5"></div>
 
 <div>
     <button id="genbtn" class="ui button">
@@ -146,19 +165,19 @@
         </tr></thead>
         <tbody>
           <tr>
-            <td data-label="Profile">Profile 0</td>
+            <td data-label="Profile">Lisa: The epitome of urban indulgence</td>
             <td id='profilepct0', data-label="Percentage">0%</td>
           </tr>
           <tr>
-            <td data-label="Profile">Profile 1</td>
+            <td data-label="Profile">John: The embodiment of urban exploration</td>
             <td id='profilepct1', data-label="Percentage">0%</td>
           </tr>
           <tr>
-            <td data-label="Profile">Profile 2</td>
+            <td data-label="Profile">Emma: The epitome of refined tastes and cultural exploration</td>
             <td id='profilepct2', data-label="Percentage">0%</td>
           </tr>
           <tr>
-            <td data-label="Profile">Profile 3</td>
+            <td data-label="Profile">Alex: The epitome of cultural appreciation and nature's embrace</td>
             <td id='profilepct3', data-label="Percentage">0%</td>
           </tr>
 
