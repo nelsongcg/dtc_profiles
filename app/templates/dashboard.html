@@ -1,0 +1,173 @@
+{% extends "layout.html" %}
+{% block content %}
+
+
+
+<script type="text/javascript">
+    $(document).ready(function(){
+        $(".rating").rating();
+
+
+        $("#genbtn").click(function(){
+            $.ajax({
+               url: '/predict',
+               type: 'POST',
+               contentType: 'application/json',
+               data: JSON.stringify ({
+                "churches": $('#churchrtn').rating('get rating'),
+                "resorts": $('#resortsrtn').rating('get rating'),
+                "beaches": $('#beachesrtn').rating('get rating'),
+                "parks": $('#peaksrtn').rating('get rating'),
+                "theatres": $('#theatresrtn').rating('get rating'),
+                "museums": $('#museumsrtn').rating('get rating'),
+                "malls": $('#mallsrtn').rating('get rating'),
+                "zoo": $('#zoortn').rating('get rating'),
+                "restaurants": $('#churchrtn').rating('get rating'),
+                "pubs_bars": $('#pubrtn').rating('get rating'),
+                "local_services": $('#localrtn').rating('get rating'),
+                "burger_pizza_shops": $('#burguerrtn').rating('get rating'),
+                "hotels_other_lodgings": $('#hotelrtn').rating('get rating'),
+                "juice_bars": $('#juicertn').rating('get rating'),
+                "art_galleries": $('#artrtn').rating('get rating'),
+                "dance_clubs": $('#dancertn').rating('get rating'),
+                "swimming_pools": $('#poolrtn').rating('get rating'),
+                "gyms": $('#gymrtn').rating('get rating'),
+                "bakeries": $('#bakeriesrtn').rating('get rating'),
+                "beauty_spas": $('#beautyrtn').rating('get rating'),
+                "cafes": $('#cafertn').rating('get rating'),
+                "view_points": $('#viewrtn').rating('get rating'),
+                "monuments": $('#monumentsrtn').rating('get rating'),
+                "gardens": $('#gardensrtn').rating('get rating')
+              }),
+              success: function (msg) {
+                var prediction = msg;
+
+                var pred0 = (prediction.Prediction[0]).toLocaleString('en-US', { minimumFractionDigits: 2 });
+                var pred1 = (prediction.Prediction[1]).toLocaleString('en-US', { minimumFractionDigits: 2 });
+                var pred2 = (prediction.Prediction[2]).toLocaleString('en-US', { minimumFractionDigits: 2 });
+                var pred3 = (prediction.Prediction[3]).toLocaleString('en-US', { minimumFractionDigits: 2 });
+                
+
+                $('#profilepct0').html('<td id="profilepct0", data-label="Percentage">pred%</td>'.replace('pred',pred0));
+                $('#profilepct1').html('<td id="profilepct1", data-label="Percentage">pred%</td>'.replace('pred',pred1));
+                $('#profilepct2').html('<td id="profilepct2", data-label="Percentage">pred%</td>'.replace('pred',pred2));
+                $('#profilepct3').html('<td id="profilepct3", data-label="Percentage">pred%</td>'.replace('pred',pred3));
+                
+            }
+            })
+        });
+
+    });
+</script>
+
+
+
+
+<div> Churches </div>
+<div id="churchrtn" class="ui star rating" data-rating="1", data-max-rating="5">Churches</div>
+
+<div> Resorts </div>
+<div id="resortsrtn" class="ui star rating" data-rating="1", data-max-rating="5"></div>
+
+<div> Beaches </div>
+<div id="beachesrtn" class="ui star rating" data-rating="1", data-max-rating="5"></div>
+
+<div> Parks </div>
+<div id="peaksrtn" class="ui star rating" data-rating="1", data-max-rating="5"></div>
+
+<div> theatres </div>
+<div id="theatresrtn" class="ui star rating" data-rating="1", data-max-rating="5"></div>
+
+<div> museums </div>
+<div id="museumsrtn" class="ui star rating" data-rating="1", data-max-rating="5"></div>
+
+<div> malls </div>
+<div id="mallsrtn" class="ui star rating" data-rating="1", data-max-rating="5"></div>
+
+<div> zoo </div>
+<div id="zoortn" class="ui star rating" data-rating="1", data-max-rating="5"></div>
+
+<div> Pubs and bars </div>
+<div id="pubrtn" class="ui star rating" data-rating="1", data-max-rating="5"></div>
+
+<div> Local services </div>
+<div id="localrtn" class="ui star rating" data-rating="1", data-max-rating="5"></div>
+
+<div> burger_pizza_shops </div>
+<div id="burguerrtn" class="ui star rating" data-rating="1", data-max-rating="5"></div>
+
+<div> hotels_other_lodgings </div>
+<div id="hotelrtn" class="ui star rating" data-rating="1", data-max-rating="5"></div>
+
+<div> juice_bars </div>
+<div id="juicertn" class="ui star rating" data-rating="1", data-max-rating="5"></div>
+
+<div> art_galleries </div>
+<div id="artrtn" class="ui star rating" data-rating="1", data-max-rating="5"></div>
+
+<div> dance_clubs </div>
+<div id="dancertn" class="ui star rating" data-rating="1", data-max-rating="5"></div>
+
+<div> swimming_pools </div>
+<div id="poolrtn" class="ui star rating" data-rating="1", data-max-rating="5"></div>
+
+<div> gyms </div>
+<div id="gymrtn" class="ui star rating" data-rating="1", data-max-rating="5"></div>
+
+<div> bakeries </div>
+<div id="bakeriesrtn" class="ui star rating" data-rating="1", data-max-rating="5"></div>
+
+<div> beauty_spas </div>
+<div id="beautyrtn" class="ui star rating" data-rating="1", data-max-rating="5"></div>
+
+<div> cafes </div>
+<div id="cafertn" class="ui star rating" data-rating="1", data-max-rating="5"></div>
+
+<div> view_points </div>
+<div id="viewrtn" class="ui star rating" data-rating="1", data-max-rating="5"></div>
+
+<div> monuments </div>
+<div id="monumentsrtn" class="ui star rating" data-rating="1", data-max-rating="5"></div>
+
+<div> gardens </div>
+<div id="gardensrtn" class="ui star rating" data-rating="1", data-max-rating="5"></div>
+
+<div>
+    <button id="genbtn" class="ui button">
+        Get profile
+    </button>
+<div>
+
+<div>
+    <table class="ui celled table">
+        <thead>
+          <tr><th>Profile</th>
+          <th>Percentage</th>
+        </tr></thead>
+        <tbody>
+          <tr>
+            <td data-label="Profile">Profile 0</td>
+            <td id='profilepct0', data-label="Percentage">0%</td>
+          </tr>
+          <tr>
+            <td data-label="Profile">Profile 1</td>
+            <td id='profilepct1', data-label="Percentage">0%</td>
+          </tr>
+          <tr>
+            <td data-label="Profile">Profile 2</td>
+            <td id='profilepct2', data-label="Percentage">0%</td>
+          </tr>
+          <tr>
+            <td data-label="Profile">Profile 3</td>
+            <td id='profilepct3', data-label="Percentage">0%</td>
+          </tr>
+
+
+        </tbody>
+      </table>
+
+</div>
+
+
+
+{% endblock %}
